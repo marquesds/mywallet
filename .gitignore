@@ -46,3 +46,4 @@ target/**/*
 .idea/**/*
 /target
 staticfiles
+local_settings.py

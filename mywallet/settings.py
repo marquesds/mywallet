@@ -20,9 +20,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '_nsjq)s-*k5l^7w+b@3x-0k#+mn&#v-rpmu4dt3ck-cd6_dh3('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
@@ -94,3 +94,8 @@ DATABASES['default'] =  dj_database_url.config()
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+try:
+    from mywallet.local_settings import *
+except ImportError:
+    pass
