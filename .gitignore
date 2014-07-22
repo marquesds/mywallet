@@ -45,3 +45,4 @@ target/**/*
 .project
 .idea/**/*
 /target
+staticfiles

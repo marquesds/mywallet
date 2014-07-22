@@ -1,1 +1,1 @@
-web: gunicorn mywallet.wsgi
+web: gunicorn mywallet.wsgi --log-file -
