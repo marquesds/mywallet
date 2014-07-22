@@ -1,4 +1,7 @@
 django
+gunicorn
 model_mommy
 pillow
 pytz
+psycopg2
+django-toolbelt
