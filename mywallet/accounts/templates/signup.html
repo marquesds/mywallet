@@ -1,0 +1,67 @@
+<!doctype html>
+{% load static %}
+<html>
+<head>
+    <title>Finice - Login</title>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/ico" href="{% static 'img/favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/foundation.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}"/>
+
+
+</head>
+<body>
+<div class="div-center">
+    <fieldset>
+        <legend>Sign Up</legend>
+        <div class="row">
+            <form data-abide method="POST">
+                {% csrf_token %}
+                <div class="name-field">
+                    <label>Name
+                        <small>required</small>
+                        {{ form.name }}
+                    </label>
+                    <small class="error">Name is required.</small>
+                </div>
+                <div class="name-field">
+                    <label>Username
+                        <small>required</small>
+                        {{ form.username }}
+                    </label>
+                    <small class="error">Name is required.</small>
+                </div>
+                <div class="email-field">
+                    <label>Email
+                        <small>required</small>
+                        {{ form.email }}
+                    </label>
+                    <small class="error">Email is required.</small>
+                </div>
+                <div class="password-field">
+                    <label for="password">Password
+                        <small>required</small>
+                        {{ form.password1 }}
+                    </label>
+                    <small class="error">Password is required.</small>
+                </div>
+                <div class="password-field">
+                    <label for="password">Password Confirmation
+                        <small>required</small>
+                        {{ form.password2 }}
+                    </label>
+                    <small class="error">Password Confirmation is wrong.</small>
+                </div>
+                <a href="{% url 'accounts:login' %}">Already have an account?</a>
+                <hr/>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </fieldset>
+</div>
+<script>
+	$(document).foundation();
+</script>
+</body>
+</html>

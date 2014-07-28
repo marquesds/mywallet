@@ -15,6 +15,6 @@ class Bill(models.Model):
     def __str__(self):
         return self.name
 
-    class Meta():
+    class Meta:
         verbose_name = 'Bill'
         verbose_name_plural = 'Bills'
