@@ -3,9 +3,17 @@ from mywallet.accounts.models import User
 
 
 class Bill(models.Model):
+    TYPE_CHOICES = (
+        ('expense', 'Expense'),
+        ('revenue', 'Revenue')
+    )
+
     name = models.CharField('Name', max_length=200)
     value = models.DecimalField('Value', max_digits=8, decimal_places=2)
-    bill_type = models.CharField('Type', max_length=8)
+    bill_type = models.CharField(
+        'Type', max_length=8, choices=TYPE_CHOICES,
+        default='expense'
+    )
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

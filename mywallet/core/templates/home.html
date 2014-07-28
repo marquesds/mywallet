@@ -17,38 +17,29 @@
                 <tr>
                     <th width="250">Name</th>
                     <th width="250">Type</th>
-                    <th width="250">Data</th>
+                    <th width="250">Date</th>
                     <th width="250">Value</th>
                 </tr>
                 </thead>
                 <tbody>
+                {% for bill in bills %}
                 <tr>
-                    <td>Java Course</td>
-                    <td>Expense</td>
-                    <td>21/01/2014</td>
-                    <td class="expense">$500,00</td>
+                    <td>{{ bill.name }}</td>
+                    <td>{{ bill.bill_type }}</td>
+                    <td>{{ bill.created_at }}</td>
+                    <td class="{% if bill.bill_type == 'revenue' %}revenue{% elif bill.bill_type == 'expense' %}expense{% endif %}">${{ bill.value }}</td>
                 </tr>
+                {% empty %}
                 <tr>
-                    <td>Django Course</td>
-                    <td>Expense</td>
-                    <td>15/02/2014</td>
-                    <td class="expense">$250,00</td>
+                    <td>----------</td>
+                    <td>----------</td>
+                    <td>----------</td>
+                    <td>----------</td>
                 </tr>
-                <tr>
-                    <td>Payment</td>
-                    <td>Revenue</td>
-                    <td>05/02/2014</td>
-                    <td class="revenue">$2500,00</td>
-                </tr>
-                <tr>
-                    <td>Food</td>
-                    <td>Expense</td>
-                    <td>18/02/2014</td>
-                    <td class="expense">$800,00</td>
-                </tr>
+                {% endfor %}
                 </tbody>
             </table>
-            <small>Total: <b class="revenue">$950,00</b></small>
+            <small>Total: <b class="{% if total > 0 %}revenue{% elif total < 0 %}expense{% endif %}">${{ total }}</b></small>
             <hr/>
         </div>
     </div>
