@@ -10,11 +10,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(
         'Username', max_length=30, unique=True,
         validators=[validators.RegexValidator(re.compile('^[\w.@+-]+$'),
-            'Username can only contain letters, digits or the following characters: @/./+/-/_', 'invalid')]
-    )
-    picture = models.ImageField(
-        upload_to='users/images', verbose_name='Profile Picture',
-        null=True, blank=True
+                                              'Username can only contain letters, digits or the following characters: @/./+/-/_',
+                                              'invalid')]
     )
 
     is_active = models.BooleanField('Is active?', blank=True, default=False)
