@@ -1,3 +1,40 @@
+body, html {
+    height: 100%;
+    width: 100%;
+}
+
+.off-canvas-wrap, .inner-wrap {
+    height: 100%;
+}
+
+.page {
+    height: 100%;
+}
+
+#footer{
+    height: 50px;
+    position: relative;
+    bottom: 0px;
+    left: 0px;
+    line-height: 50px;
+    color: #aaa;
+    text-align: center;
+    width: 100%;
+}
+
+.expense {
+    color: red;
+}
+
+.revenue {
+    color: green;
+}
+
+.welcome {
+    color: gray;
+    margin: 50px;
+}
+
 .div-center {
     width: 400px;
     height: 100px;
@@ -9,4 +46,9 @@
     right: 0;
 
     margin: auto;
+}
+
+.home-image {
+    height: 25px;
+    margin-bottom: 4px;
 }
