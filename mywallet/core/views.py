@@ -51,3 +51,15 @@ def bill(request, pk):
             form.save()
 
     return redirect('core:home')
+
+
+def about(request):
+    return render(request, 'about.html')
+
+
+def contact(request):
+    return render(request, 'contact.html')
+
+
+def donate(request):
+    return render(request, 'donate.html')

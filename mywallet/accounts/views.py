@@ -23,3 +23,7 @@ def signup(request):
     }
 
     return render(request, template_name, context)
+
+
+def preferences(request):
+    return render(request, 'preferences.html')
