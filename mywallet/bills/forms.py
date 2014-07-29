@@ -9,6 +9,7 @@ class BillForm(forms.ModelForm):
 
     def save(self, commit=True):
         bill = super(BillForm, self).save(commit=False)
+        bill.user = self.user
         if commit:
             bill.save()
         return bill

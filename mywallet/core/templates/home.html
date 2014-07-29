@@ -27,7 +27,9 @@
                     <td>{{ bill.name }}</td>
                     <td>{{ bill.bill_type }}</td>
                     <td>{{ bill.created_at }}</td>
-                    <td class="{% if bill.bill_type == 'revenue' %}revenue{% elif bill.bill_type == 'expense' %}expense{% endif %}">${{ bill.value }}</td>
+                    <td class="{% if bill.bill_type == 'revenue' %}revenue{% elif bill.bill_type == 'expense' %}expense{% endif %}">
+                        ${{ bill.value }}
+                    </td>
                 </tr>
                 {% empty %}
                 <tr>
@@ -39,7 +41,26 @@
                 {% endfor %}
                 </tbody>
             </table>
-            <small>Total: <b class="{% if total > 0 %}revenue{% elif total < 0 %}expense{% endif %}">${{ total }}</b></small>
+            <div class="pagination-centered">
+                <ul class="pagination">
+                    <li class="arrow unavailable"><a href="">&laquo;</a></li>
+                    {% for num in bills.paginator.page_range %}
+                        {% ifequal num bills.number %}
+                            <li class="current"><a href="">{{ num }}</a></li>
+                        {% else %}
+                            {% if bills.has_next %}
+                                <li><a href="?page={{ num }}">{{ num }}</a></li>
+                            {% endif %}
+                            {% if bills.has_previous %}
+                                <li><a href="?page={{ bills.previous_page_number }}">{{ bills.previous_page_number }}</a></li>
+                            {% endif %}
+                        {% endifequal %}
+                    {% endfor %}
+                    <li class="arrow"><a href="">&raquo;</a></li>
+                </ul>
+            </div>
+            <small>Total: <b class="{% if total > 0 %}revenue{% elif total < 0 %}expense{% endif %}">${{ total }}</b>
+            </small>
             <hr/>
         </div>
     </div>

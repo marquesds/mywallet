@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from mywallet.bills.models import Bill
 from mywallet.bills.forms import BillForm
 from mywallet.accounts.models import User
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def index(request):
@@ -20,6 +21,18 @@ def home(request):
             total += bill.value
         else:
             total -= bill.value
+
+    # Django pagination
+    paginator = Paginator(bills, 5)
+    page = request.GET.get('page')
+    try:
+        bills = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        bills = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        bills = paginator.page(paginator.num_pages)
 
     context = {
         'form': form,
