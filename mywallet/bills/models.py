@@ -12,7 +12,7 @@ class Bill(models.Model):
     value = models.DecimalField('Value', max_digits=8, decimal_places=2)
     bill_type = models.CharField(
         'Type', max_length=8, choices=TYPE_CHOICES,
-        default='expense'
+        default='revenue'
     )
 
     created_at = models.DateTimeField(auto_now_add=True)
