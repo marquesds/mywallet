@@ -53,11 +53,7 @@
                         {% ifequal num bills.number %}
                             <li class="current"><a href="">{{ num }}</a></li>
                         {% else %}
-                            {% if bills.has_next %}
-                                <li><a href="?page={{ num }}">{{ num }}</a></li>
-                            {% else %}
-                                <li><a href="?page={{ num }}">{{ num }}</a></li>
-                            {% endif %}
+                            <li><a href="?page={{ num }}">{{ num }}</a></li>
                         {% endifequal %}
                     {% endfor %}
 
